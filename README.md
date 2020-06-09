@@ -1,3 +1,3 @@
 # TUTALI
 
-Proyecto en la materia de ingeniería de software. 
+CRUD proyecto en la materia de ingeniería de software. 
