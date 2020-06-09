@@ -1,0 +1,100 @@
+<%- include('partials/_header') -%>
+
+
+    <div class="container">
+      <div class="row">
+        <!-- FORM -->
+        <div class="col-md-5">
+          <div class="card">
+            <div class="card-body">
+              <h1> INSERT A PRODUCT </h1>
+              <form class="" action="/add" method="post">
+                <div class="form-group">
+                  <input type="text" name="name" placeholder="Name" class= "form-control">
+                </div>
+                <div class="form-group">
+                  <input type="number" name="price" placeholder="Price" class= "form-control">
+                </div>
+                <div class="form-group">
+                  <input type="text" name="quantity" placeholder="Quantity" class= "form-control">
+                </div>
+                <div class="form-group">
+                  <input type="text" name="image" placeholder="Insert image" class= "form-control">
+                </div>
+                <div class="form-group">
+                  <textarea name="description" cols="80" class="form-control" placeholder="Description"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block"> Add product </button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- LIST -->
+        <div class="col-md-7">
+          <table class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>ID Product</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Description</th>
+                <th>Image</th>
+                <th>State</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% for(var i = 0; i < products.length; i++) { %>
+                <tr>
+                  <td> <%= i + 1 %></td>
+                  <td> <%= products[i].name %></td>
+                  <td> <%= products[i].price %></td>
+                  <td> <%= products[i].quantity %></td>
+                  <td> <%= products[i].description %></td>
+                  <td> <%= products[i].image %></td>
+                  <td>
+                    <a href="/turn/<%= products[i]._id %>"
+                       class="btn <%= products[i].status ? 'btn-success' : 'btn-dark' %>">
+                       SOLD
+                    </a>
+                    <a href="/delete/<%= products[i]._id %>" class="btn btn-dark"> DELETE </a>
+                    <a href="/edit/<%= products[i]._id %>" id="btn-modal" class="btn btn-dark"> EDIT </a>
+                        <!-- <div id= "bg-modal "class="bg-modal">
+                          <div class="modal-content">
+
+                            <div class="col-md-5 offset-md-3">
+                              <div class="card">
+                                <div class="card-body">
+                                  <h1> EDIT PRODUCT </h1>
+                                  <form action="/update/<%= products[i]._id %>" method="post">
+                                    <div class="form-group">
+                                      <input type="text" name="name" placeholder="Name" class= "form-control"
+                                      value = "<%= products[i].name %>">
+                                    </div>
+                                    <div class="form-group">
+                                      <input type="number" name="price" placeholder="Price" class= "form-control"
+                                      value = "<%= products[i].price %>">
+                                    </div>
+                                    <div class="form-group">
+                                      <textarea name="description" cols="80" class="form-control" placeholder="Description"><%= products[i].description %></textarea>
+                                    </div>
+                                    <div
+                                    <div class="btn close">
+                                    <button type="submit" class="btn btn-primary btn-block"> Update product </button>
+                                    </div>
+                                  </form>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div> -->
+                  </td>
+                </tr>
+              <% } %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+<%- include('partials/_footer') -%>
